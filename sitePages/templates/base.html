@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}{% endblock %} | Coleção de Filmes
+    </title>
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <header id="cabecalho-principal">
+        <a href="{% url 'mainPage' %}"> <img src="{% static 'logo.svg' %}"> </a>
+        <a href="{% url 'mainPage' %}"> <p>Página Inicial</p> </a>
+        <nav id="navegacao-principal">
+            <ul>
+                <li><a href="{% url 'postList' %}">Meus Filmes</a></li>
+                <li><a href="{% url 'postForm' %}">Form</a></li>
+                <li><a href="{% url 'postEdit' %}">Edit</a></li>
+                <li><a href="{% url 'postDetail' %}">Detail</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="conteiner-principal">
+        {% block content %}
+        {% endblock content %}
+    </main>
+
+    <footer id="rodape-principal">
+        <p><small>Lucas Arada Alves - Copyright 2023</small></p>
+    </footer>
+</body>
+
+</html>
