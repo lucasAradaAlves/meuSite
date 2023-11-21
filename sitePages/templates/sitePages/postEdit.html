@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title %}
-alterarPost
-{% endblock title %}
-
 {% block content %}
-<h2>Altere sua resenha!</h2>
-{% endblock content %}
+  <h1>Editar Publicação</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar Mudanças</button>
+  </form>
+  <a href="{% url 'postDetail' pk=post.id %}">Cancelar</a>
+{% endblock %}

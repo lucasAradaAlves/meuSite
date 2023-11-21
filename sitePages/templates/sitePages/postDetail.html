@@ -5,8 +5,10 @@ informaçõesPost
 {% endblock title %}
 
 {% block content %}
-<h2><b>Nome do Filme:</b> {{ postagem.nomeFilme }}</h2>
-<h3><b>Data e Hora do Evento:</b> {{ postagem.tempoPost }}</h3>
-<p> {{ postagem.textoPost|safe }} </p>
+<h2><b>Nome do Filme:</b> {{ post.nomeFilme }}</h2>
+<h3><b>Data da Publicação:</b> {{ post.time }}</h3>
+<p> {{ post.opiniao|safe }} </p>
+
+<a href="{% url 'postList' %}">Voltar para Meus Filmes</a>
 
 {% endblock content %}

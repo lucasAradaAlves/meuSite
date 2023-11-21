@@ -8,4 +8,8 @@ urlpatterns = [
     path('postEdit/', views.postEdit, name='postEdit'),
     path('postForm/', views.postForm, name='postForm'),
     path('posts/', views.postList, name='postList'),
+    path('post/<int:pk>/', views.postDetail, name='postDetail'),
+    path('post/<int:pk>/delete/', views.postDeleteConfirm, name='postDeleteConfirm'),
+    path('post/<int:pk>/delete/confirm/', views.postDelete, name='postDelete'),
+    path('post/<int:pk>/edit/', views.postEdit, name='postEdit'),
 ]

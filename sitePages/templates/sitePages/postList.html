@@ -9,8 +9,10 @@ Meus filmes
     {% for post in posts %}
         <div class="cartaoDoFilme">
             <h2>{{ post.nomeFilme }}</h2>
-            <p>Date: {{ post.time|date }}</p>
-            <p>Content: {{ post.opiniao|safe }}</p>
+            <p>Data da Publicação: {{ post.time|date }}</p>
+            <a href="{% url 'postDetail' pk=post.id %}">Ver Publicação</a>
+            <a href="{% url 'postDeleteConfirm' pk=post.id %}">Deletar Publicação</a>
+            <a href="{% url 'postEdit' pk=post.id %}">Editar Publicação</a>
         </div>
     {% endfor %}
 {% endblock content %}
