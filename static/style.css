@@ -1,8 +1,11 @@
+html {
+    display: grid;
+}
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
-    padding: 20px;
-    background-color: #7f19be;
+    padding: 20px 1em 20px 1em;
+    background-color: #8d19c7;
     color: #fff;
 }
 
@@ -17,21 +20,11 @@ header {
     text-align: center;
     margin: 15 auto;
     width: 100%;
-    max-width: 1080px;
     padding: 20px 2px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-}
-
-header h1 {
-    margin: 0;
     font-size: 36px;
-}
-
-header p {
-    margin: 0;
-    font-size: 18px;
 }
 
 main {
@@ -74,4 +67,12 @@ footer {
     background-color: #1a1e24;
     padding: 10px 0;
     text-align: center;
+}
+
+.cartaoDoFilme {
+    border: 15px solid #8d19c7;
+    background-clip: padding-box;
+    background-color: #5092b3;
+    padding: 2px 1em 2px 1em;
+    text-align: left;
 }

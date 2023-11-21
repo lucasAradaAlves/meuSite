@@ -5,5 +5,12 @@ Meus filmes
 {% endblock title %}
 
 {% block content %}
-<h2>Meus filmes!</h2>
+<h1>Meus filmes!</h1>
+    {% for post in posts %}
+        <div class="cartaoDoFilme">
+            <h2>{{ post.nomeFilme }}</h2>
+            <p>Date: {{ post.time|date }}</p>
+            <p>Content: {{ post.opiniao|safe }}</p>
+        </div>
+    {% endfor %}
 {% endblock content %}
