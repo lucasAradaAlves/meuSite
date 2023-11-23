@@ -5,9 +5,16 @@ informaçõesPost
 {% endblock title %}
 
 {% block content %}
-<h2><b>Nome do Filme:</b> {{ post.nomeFilme }}</h2>
-<h3><b>Data da Publicação:</b> {{ post.time }}</h3>
+<h1><b>{{ post.nomeFilme }}</b></h1>
+<p><b>Publicado em {{ post.time }}</b></p>
 <p> {{ post.opiniao|safe }} </p>
+
+<h2>Comentários</h2>
+  {% for comment in comments %}
+    <p>{{ comment.text }} - {{ comment.author.username }} - {{ comment.pub_date|date }}</p>
+  {% endfor %}
+
+<a href="{% url 'createComment' pk=post.id %}">Comentar</a>
 
 <a href="{% url 'postList' %}">Voltar para Meus Filmes</a>
 
