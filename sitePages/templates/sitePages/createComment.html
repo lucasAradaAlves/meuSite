@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Comentar</h1>
+  <form method="post" action="{% url 'createComment' pk=post.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Adicionar Comentário</button>
+  </form>
+  <a href="{% url 'postDetail' pk=post.id %}">Voltar para Meus Filmes</a>
+{% endblock %}
