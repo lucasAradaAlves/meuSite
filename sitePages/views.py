@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Post, Comment
+from .models import Post, Comment, Category
 from .forms import PostForm, CommentForm
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
@@ -43,6 +43,7 @@ def postForm(request):
             post.author = request.user
             post.time = timezone.now()
             post.save()
+            formulario.save_m2m()
             return redirect('postList')
     else:
         formulario = PostForm()
@@ -57,6 +58,7 @@ def postDelete(request, pk):
     post.delete()
     return redirect('postList')
 
+@login_required
 def postEdit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == 'POST':
@@ -67,19 +69,6 @@ def postEdit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'sitePages/postEdit.html', {'form': form, 'post': post})
-
-@login_required
-def addPost(request):
-    if request.method == 'POST':
-        form = PostForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.save()
-            return redirect('postList')
-    else:
-        form = PostForm()
-    return render(request, 'sitePages/addPost.html', {'form': form})
 
 @login_required
 def createComment(request, pk):
@@ -95,5 +84,21 @@ def createComment(request, pk):
             return redirect('postDetail', pk=post.pk)
     else:
         form = CommentForm()
-
     return render(request, 'sitePages/createComment.html', {'form': form, 'post': post})
+
+def categoryList(request):
+    categories = Category.objects.all()
+    return render(request, 'sitePages/categoryList.html', {'categories': categories})
+
+def categoryDetail(request, pk):
+    category = get_object_or_404(Category, pk=pk)
+    posts = Post.objects.filter(categories=category)
+    return render(request, 'sitePages/categoryDetail.html', {'category': category, 'posts': posts})
+
+def getPostsInCategory(category_id):
+    try:
+        category = Category.objects.get(id=category_id)
+        postsInCategory = Post.objects.filter(categories=category)
+        return postsInCategory
+    except Category.DoesNotExist:
+        return None

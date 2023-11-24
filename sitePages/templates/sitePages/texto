@@ -1,0 +1,13 @@
+<!-- templates/blog/post_detail.html -->
+
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>{{ post.title }}</h1>
+  <p>{{ post.content|safe }}</p>
+  <p>Published on: {{ post.pub_date|date }}</p>
+
+  
+
+  <a href="{% url 'post_list' %}">Back to Post List</a>
+{% endblock %}
