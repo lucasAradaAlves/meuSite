@@ -2,11 +2,17 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
+
 class Post(models.Model):
     nomeFilme = models.CharField(max_length=100)
     time  = models.DateTimeField('Data da publicação', null=True, blank=True)
     opiniao = models.CharField(max_length=500)
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    categories = models.ManyToManyField(Category, related_name='posts')
     def __str__(self):
         return self.nomeFilme
     def get_absolute_url(self):
