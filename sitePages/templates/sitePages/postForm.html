@@ -6,7 +6,7 @@ novoPost
 
 {% block content %}
 <h1>Crie uma nova resenha!</h1>
-<form method="post" action="{% url 'postForm' %}">
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ formulario.as_p }}
     <button type="submit">Enviar</button>

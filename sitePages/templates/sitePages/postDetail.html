@@ -9,6 +9,17 @@ informaçõesPost
 <p><b>Publicado em {{ post.time }}</b></p>
 <p> {{ post.opiniao|safe }} </p>
 
+<h2>Categorias</h2>
+  {% if post.categories %}
+    <ul>
+      {% for category in post.categories.all %}
+      <li>{{ category.name }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Esse filme está sem Categorias.</p>
+  {% endif %}
+
 <h2>Comentários</h2>
   {% for comment in comments %}
     <p>{{ comment.text }} - {{ comment.author.username }} - {{ comment.pub_date|date }}</p>

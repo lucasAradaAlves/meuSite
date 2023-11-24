@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ category.name }}</h1>
+
+  <h2>Filmes nessa Categoria</h2>
+  {% if posts %}
+    <ul>
+      {% for post in posts %}
+        <li><a href="{% url 'postDetail' pk=post.id %}">{{ post.nomeFilme }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Sem filmes nessa Categoria. Ainda...</p>
+  {% endif %}
+
+  <a href="{% url 'categoryList' %}">Voltar para Categorias</a>
+{% endblock %}
