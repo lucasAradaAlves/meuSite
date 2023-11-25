@@ -1,8 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
 from .models import Post, Comment, Category
 from .forms import PostForm, CommentForm
-from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 
 def mainPage(request):
@@ -13,7 +11,6 @@ def postList(request):
     posts = Post.objects.all()
     return render(request, 'sitePages/postList.html', {'posts': posts})
 
-@login_required
 def postDetail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     comments = post.comments.all().order_by('-pub_date')
@@ -34,7 +31,6 @@ def postEdit(request):
     context = {}
     return render(request, 'sitePages/postEdit.html', context)
 
-@login_required
 def postForm(request):
     if request.method == 'POST':
         formulario = PostForm(request.POST)
@@ -58,7 +54,6 @@ def postDelete(request, pk):
     post.delete()
     return redirect('postList')
 
-@login_required
 def postEdit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == 'POST':
@@ -70,7 +65,6 @@ def postEdit(request, pk):
         form = PostForm(instance=post)
     return render(request, 'sitePages/postEdit.html', {'form': form, 'post': post})
 
-@login_required
 def createComment(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == 'POST':
