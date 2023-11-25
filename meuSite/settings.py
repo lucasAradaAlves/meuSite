@@ -26,7 +26,11 @@ SECRET_KEY = 'django-insecure-cbgu!rwzdw560x2$q1n9!duh^uh0_!e#%!(=_oy8s7u%h7102*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+<<<<<<< HEAD
 ALLOWED_HOSTS = ['meusite-lcix.onrender.com','127.0.0.1']
+=======
+ALLOWED_HOSTS = ['meusite-lcix.onrender.com']
+>>>>>>> b25f46df032ea2c9974b8dec87da1532db2df374
 
 
 # Application definition
