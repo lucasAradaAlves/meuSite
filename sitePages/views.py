@@ -8,7 +8,7 @@ def mainPage(request):
     return render(request, 'sitePages/mainPage.html', context)
 
 def postList(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('-time')
     return render(request, 'sitePages/postList.html', {'posts': posts})
 
 def postDetail(request, pk):
