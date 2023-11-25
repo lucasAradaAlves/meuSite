@@ -6,7 +6,7 @@ informaçõesPost
 
 {% block content %}
 <h1><b>{{ post.nomeFilme }}</b></h1>
-<p><b>Publicado em {{ post.time }}</b></p>
+<p><b>Publicado em {{ post.time }}</b> por {{ post.author }}</p>
 <p> {{ post.opiniao|safe }} </p>
 
 <h2>Categorias</h2>
